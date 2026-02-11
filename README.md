@@ -9,7 +9,7 @@
 </h1>
 
 <h4 align="center">
-    The solana trading terminal supercharged by AI
+  The solana trading terminal supercharged by AI
 </h4>
 
 ## 🚀 Nexa Roadmap – Alpha Release
