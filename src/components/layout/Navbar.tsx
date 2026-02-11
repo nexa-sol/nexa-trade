@@ -7,6 +7,7 @@ import {
   UserIcon,
   WalletIcon,
 } from "lucide-react";
+import { SolanaLogo } from "../logos";
 
 const links = [
   {
@@ -20,6 +21,9 @@ const links = [
 ];
 
 export default function Navbar() {
+  const personalItemClass =
+    "rounded-full bg-card p-2! aspect-square group hover:bg-accent/20 hover:text-accent";
+
   return (
     <nav className="border-b-2 border-b-border py-4 px-5 flex gap-5 items-center">
       <a href="/markets" className="flex gap-1 items-center">
@@ -41,37 +45,28 @@ export default function Navbar() {
         </ul>
       </div>
       <div className="ml-auto flex gap-4">
-        <Button
-          variant="outline"
-          className="rounded-full bg-card p-2! aspect-square"
-        >
+        <Button variant="outline" className={personalItemClass}>
           <StarIcon />
         </Button>
-        <Button
-          variant="outline"
-          className="rounded-full bg-card p-2! aspect-square"
-        >
+        <Button variant="outline" className={personalItemClass}>
           <BellIcon />
         </Button>
       </div>
       <div className="flex gap-4">
-        <Button
-          variant="outline"
-          className="rounded-full bg-card p-2! aspect-square group"
-        >
+        <Button variant="outline" className={personalItemClass}>
           <div className="flex gap-1 items-center h-full">
             <WalletIcon />
-            3.13
-            <span className="w-[1.5px] h-full ml-1 mr-1 bg-border group-hover:bg-accent-foreground animate-colors duration-300" />
+            <div className="flex items-center">
+              <SolanaLogo className="p-0.5" />
+              3.13
+            </div>
+            <span className="w-[1.5px] h-full ml-1 mr-1 bg-border group-hover:bg-accent/60 animate-colors duration-300" />
             $248
             <ChevronDownIcon />
           </div>
         </Button>
 
-        <Button
-          variant="outline"
-          className="rounded-full bg-card p-2! aspect-square"
-        >
+        <Button variant="outline" className={personalItemClass}>
           <UserIcon />
         </Button>
       </div>
