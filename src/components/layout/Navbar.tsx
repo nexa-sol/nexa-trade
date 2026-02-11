@@ -25,7 +25,7 @@ export default function Navbar() {
     "rounded-full bg-card p-2! aspect-square group hover:bg-accent/20 hover:text-accent";
 
   return (
-    <nav className="border-b-2 border-b-border py-4 px-5 flex gap-5 items-center">
+    <nav className="border-b border-b-border py-4 px-5 flex gap-5 items-center">
       <a href="/markets" className="flex gap-1 items-center">
         <img src="/nexa.svg" alt="Nexa" className="h-7" />
         <img src="/nexa-text.svg" alt="NEXA" className="h-5" />
