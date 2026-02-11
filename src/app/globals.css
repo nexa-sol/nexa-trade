@@ -48,7 +48,7 @@
 }
 
 :root {
-  --radius: 0.325rem;
+  --radius: 0.425rem;
 
   /* Base surfaces */
   --background: oklch(0.13 0.01 260);          /* deep charcoal */
