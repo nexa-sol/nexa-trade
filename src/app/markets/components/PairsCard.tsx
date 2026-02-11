@@ -1,11 +1,12 @@
 import { SolanaLogo } from "@/components/logos";
 import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Settings2Icon, ZapIcon } from "lucide-react";
+import TokenCard from "./TokenCard";
 
 export default function PairsCard({ title }: { title: string }) {
   return (
-    <Card className="py-3">
+    <Card className="py-3 gap-0!">
       <CardHeader className="px-4 pb-3! border-b flex justify-between items-center">
         <CardTitle>{title}</CardTitle>
         <div className="flex items-center gap-2">
@@ -38,6 +39,11 @@ export default function PairsCard({ title }: { title: string }) {
           </Button>
         </div>
       </CardHeader>
+      <CardContent className="px-4 py-4 border-b border-border ">
+        <TokenCard
+          token={{ symbol: "SYM", name: "My token", mint: "myMint" }}
+        />
+      </CardContent>
     </Card>
   );
 }
