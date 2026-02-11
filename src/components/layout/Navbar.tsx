@@ -1,7 +1,38 @@
+import Link from "next/link";
+import { Button } from "../ui/button";
+
+const links = [
+  {
+    path: "/markets",
+    name: "Markets",
+  },
+  {
+    path: "/trackers",
+    name: "Trackers",
+  },
+];
+
 export default function Navbar() {
-    return (
-        <header>
-            
-        </header>
-    )
+  return (
+    <nav className="border-b-2 border-b-border py-4 px-5 flex gap-5 items-center">
+      <a href="/markets" className="flex gap-1 items-center">
+        <img src="/nexa.svg" alt="Nexa" className="h-7" />
+        <img src="/nexa-text.svg" alt="NEXA" className="h-5" />
+      </a>
+      <div>
+        <ul className="flex">
+          {links.map((l) => (
+            <li key={l.path}>
+              <Link
+                href={l.path}
+                className="px-3 py-2 rounded-sm hover:bg-primary/20 hover:text-primary transition-colors duration-300"
+              >
+                {l.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </nav>
+  );
 }

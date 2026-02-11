@@ -48,6 +48,8 @@
 }
 
 :root {
+  --radius: 0.325rem;
+
   /* Base surfaces */
   --background: oklch(0.13 0.01 260);          /* deep charcoal */
   --foreground: oklch(0.98 0 0);
@@ -110,4 +112,17 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+body {
+  @apply bg-background text-foreground;
+}
+
+
+@font-face {
+  font-family: 'Researcher';
+  src: url('/font/researcher-regular-400.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }

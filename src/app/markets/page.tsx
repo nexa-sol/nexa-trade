@@ -5,7 +5,7 @@ import Statusbar from "@/components/layout/Statusbar";
 
 export default function Markets() {
   return (
-    <main>
+    <main className="h-svh">
       <Navbar />
       <Statusbar />
     </main>
