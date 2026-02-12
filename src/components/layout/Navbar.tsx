@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "../ui/button";
 import {
@@ -8,6 +10,8 @@ import {
   WalletIcon,
 } from "lucide-react";
 import { SolanaLogo } from "../logos";
+import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 const links = [
   {
@@ -23,6 +27,7 @@ const links = [
 export default function Navbar() {
   const personalItemClass =
     "rounded-full bg-card p-2! aspect-square group hover:bg-accent/20 hover:text-accent";
+  const pathname = usePathname();
 
   return (
     <nav className="border-b border-b-border py-4 px-5 flex gap-5 items-center">
@@ -36,7 +41,10 @@ export default function Navbar() {
             <li key={l.path}>
               <Link
                 href={l.path}
-                className="px-3 py-2 rounded-lg hover:bg-primary/20 hover:text-primary transition-colors duration-300"
+                className={cn(
+                  "px-3 py-2 rounded-lg hover:bg-primary/20 hover:text-primary transition-colors duration-300",
+                  l.path === pathname && "text-primary",
+                )}
               >
                 {l.name}
               </Link>
