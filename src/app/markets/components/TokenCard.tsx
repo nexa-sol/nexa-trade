@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Token, TokenLiveData } from "@/modules/tokens/types";
 import {
@@ -13,6 +14,7 @@ import {
   LucideIcon,
   UsersIcon,
   UserStarIcon,
+  ZapIcon,
 } from "lucide-react";
 
 export default function TokenCard({ token }: { token: Token }) {
@@ -66,6 +68,13 @@ export default function TokenCard({ token }: { token: Token }) {
           <TokenBadge value={live.bundleHold} icon={BoxesIcon} />
         </div>
       </div>
+      <div className="ml-auto flex flex-col">
+        <TokenDigit name="MC" value="$15.6k" />
+        <TokenDigit name="V" value="$42k" />
+        <Button className="mt-auto ml-auto p-1! h-max w-max rounded-full bg-primary/20 text-primary hover:text-black gap-1 text-xs">
+          <ZapIcon />1 SOL
+        </Button>
+      </div>
     </div>
   );
 }
@@ -90,5 +99,14 @@ function TokenBadge({
       <Icon />
       {value}%
     </Badge>
+  );
+}
+
+function TokenDigit({ name, value }: { name: string; value: string }) {
+  return (
+    <div className="ml-auto flex gap-1 items-baseline">
+      <p className="text-muted-foreground text-xs">{name}</p>
+      <p>{value}</p>
+    </div>
   );
 }
