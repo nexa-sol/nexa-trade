@@ -107,19 +107,23 @@ export default function TokenCard({ token }: { token: Token }) {
           <div className="flex gap-2 items-center text-xs text-[#5DBCFF] flex-wrap">
             {token.twitterPost ? (
               <>
-                <Link
-                  className="hover:underline"
-                  target="_blank"
-                  href={`https://x.com/${token.twitterPost.author?.username}`}
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  by @{token.twitterPost.author?.username}
-                </Link>
+                <MinimalTooltip label="Twitter author">
+                  <Link
+                    className="hover:underline"
+                    target="_blank"
+                    href={`https://x.com/${token.twitterPost.author?.username}`}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    by @{token.twitterPost.author?.username}
+                  </Link>
+                </MinimalTooltip>
 
-                <p className="flex gap-0.5 items-center">
-                  <UserIcon className="w-3 h-3" />
-                  {humanizeNumber(token.twitterPost.author?.followers)}
-                </p>
+                <MinimalTooltip label="Followers">
+                  <p className="flex gap-0.5 items-center">
+                    <UserIcon className="w-3 h-3" />
+                    {humanizeNumber(token.twitterPost.author?.followers)}
+                  </p>
+                </MinimalTooltip>
               </>
             ) : (
               <span className="invisible">by @username</span>
@@ -128,23 +132,23 @@ export default function TokenCard({ token }: { token: Token }) {
 
           {/* Badges */}
           <div className="flex gap-1.5 items-center flex-wrap">
-            <MinimalTooltip independent label="Top 10 Holders">
+            <MinimalTooltip independent bottom label="Top 10 Holders">
               <TokenBadge value={live.topHolder} icon={UserStarIcon} />
             </MinimalTooltip>
 
-            <MinimalTooltip independent label="Dev Holdings">
+            <MinimalTooltip independent bottom label="Dev Holdings">
               <TokenBadge value={live.devHold} icon={ChefHatIcon} />
             </MinimalTooltip>
 
-            <MinimalTooltip independent label="Snipers">
+            <MinimalTooltip independent bottom label="Snipers">
               <TokenBadge value={live.snipersHold} icon={CrosshairIcon} />
             </MinimalTooltip>
 
-            <MinimalTooltip independent label="Insiders">
+            <MinimalTooltip independent bottom label="Insiders">
               <TokenBadge value={live.insidersHold} icon={GhostIcon} />
             </MinimalTooltip>
 
-            <MinimalTooltip independent label="Bundlers">
+            <MinimalTooltip independent bottom label="Bundlers">
               <TokenBadge value={live.bundleHold} icon={BoxesIcon} />
             </MinimalTooltip>
           </div>
@@ -159,8 +163,13 @@ export default function TokenCard({ token }: { token: Token }) {
         "
       >
         <div className="flex gap-4 md:flex-col md:gap-1">
-          <TokenDigit name="MC" value="$15.6k" />
-          <TokenDigit name="V" value="$42k" />
+          <MinimalTooltip label="Market Cap">
+            <TokenDigit name="MC" value="$15.6k" />
+          </MinimalTooltip>
+
+          <MinimalTooltip label="Volume" bottom>
+            <TokenDigit name="V" value="$42k" />
+          </MinimalTooltip>
         </div>
 
         <Button
