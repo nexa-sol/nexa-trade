@@ -42,8 +42,8 @@ export default function Navbar() {
               <Link
                 href={l.path}
                 className={cn(
-                  "px-3 py-2 rounded-lg hover:bg-primary/20 hover:text-primary transition-colors duration-300",
-                  l.path === pathname && "text-primary",
+                  "px-3 py-2 rounded-lg hover:bg-accent/20 hover:text-accent transition-colors duration-300",
+                  l.path === pathname && "text-accent",
                 )}
               >
                 {l.name}
