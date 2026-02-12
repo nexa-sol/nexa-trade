@@ -39,7 +39,7 @@ export default function PairsCard({ title }: { title: string }) {
           </Button>
         </div>
       </CardHeader>
-      <CardContent className="px-4 py-4 border-b border-border ">
+      <CardContent className="px-4 py-4 border-b border-border hover:bg-muted">
         <TokenCard
           token={{ symbol: "SYM", name: "My token", mint: "myMint" }}
         />

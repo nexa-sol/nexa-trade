@@ -69,7 +69,7 @@
   --secondary-foreground: oklch(0.96 0 0);
 
   /* Muted / subtle text */
-  --muted: oklch(0.24 0.015 260);
+  --muted: oklch(22.068% 0.01327 258.402);
   --muted-foreground: oklch(0.72 0.01 260);
 
   /* Accent – SOL mint */
