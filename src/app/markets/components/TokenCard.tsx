@@ -1,10 +1,5 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import MinimalTooltip from "@/components/utils/MinimalTooltip";
 import { humanizeNumber } from "@/lib/renderUtils";
 import { cn } from "@/lib/utils";
@@ -40,7 +35,10 @@ export default function TokenCard({ token }: { token: Token }) {
 
   return (
     <div
-      className="flex gap-4 cursor-pointer"
+      className="
+        flex flex-col gap-3 cursor-pointer
+        md:flex-row md:gap-4
+      "
       onClick={(e) => {
         if (e.ctrlKey || e.metaKey) {
           window.open(`/token/${token.mint}`, "_blank", "noopener,noreferrer");
@@ -52,114 +50,130 @@ export default function TokenCard({ token }: { token: Token }) {
         window.open(`/token/${token.mint}`, "_blank", "noopener,noreferrer")
       }
     >
-      <div className="h-full overflow-hidden min-w-0">
-        {token.logoURI ? (
-          <img
-            src={token.logoURI}
-            alt="Token"
-            className="w-16 h-16 rounded-lg"
-          />
-        ) : (
-          <div className="w-16 h-16 bg-primary/20 rounded-lg flex items-center justify-center">
-            <CoinsIcon className="text-primary" />
+      {/* Left: logo */}
+      <div className="flex gap-3 md:gap-4 min-w-0">
+        <div className="h-full overflow-hidden">
+          {token.logoURI ? (
+            <img
+              src={token.logoURI}
+              alt="Token"
+              className="w-14 h-14 md:w-16 md:h-16 rounded-lg"
+            />
+          ) : (
+            <div className="w-14 h-14 md:w-16 md:h-16 bg-primary/20 rounded-lg flex items-center justify-center">
+              <CoinsIcon className="text-primary" />
+            </div>
+          )}
+        </div>
+
+        {/* Main content */}
+        <div className="flex flex-col gap-1 min-w-0">
+          {/* Symbol + name */}
+          <div className="flex gap-1.5 items-center flex-wrap">
+            <p className="font-semibold">{token.symbol}</p>
+            <p
+              className="text-muted-foreground flex gap-1 items-center cursor-pointer hover:text-accent truncate"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                navigator.clipboard.writeText(token.mint);
+              }}
+            >
+              {token.name}
+              <CopyIcon className="w-4 h-4 shrink-0" />
+            </p>
           </div>
-        )}
-        <p className="mt-1 truncate text-xs text-muted-foreground"></p>
-      </div>
-      <div className="flex flex-col gap-1">
-        <div className="flex gap-1.5">
-          <p className="font-semibold">{token.symbol}</p>
-          <p
-            className="text-muted-foreground flex gap-1 items-center h-max cursor-pointer hover:text-accent"
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              navigator.clipboard.writeText(token.mint);
-            }}
-          >
-            {token.name} <CopyIcon className="w-4 h-4" />
-          </p>
-        </div>
-        <div className="items-center flex gap-3">
-          <p className="text-green-500 text-sm">20m</p>
-          <MinimalTooltip label="Holders">
-            <p className="text-sm flex gap-1 items-center">
-              <UsersIcon className="w-3.5 h-3.5 text-muted-foreground" />
-              10
-            </p>
-          </MinimalTooltip>
-          <MinimalTooltip label="Live NEXA viewers">
-            <p className="text-sm flex gap-1 items-center">
-              <EyeIcon className="w-3.5 h-3.5" />
-              10
-            </p>
-          </MinimalTooltip>
-        </div>
-        <div className="flex gap-1.5 items-center text-xs text-[#5DBCFF]">
-          {token.twitterPost ? (
-            <>
-              <MinimalTooltip label="Twitter author">
+
+          {/* Stats */}
+          <div className="items-center flex gap-3 flex-wrap text-xs md:text-sm">
+            <p className="text-green-500">20m</p>
+
+            <MinimalTooltip label="Holders">
+              <p className="flex gap-1 items-center">
+                <UsersIcon className="w-3.5 h-3.5 text-muted-foreground" />
+                10
+              </p>
+            </MinimalTooltip>
+
+            <MinimalTooltip label="Live NEXA viewers">
+              <p className="flex gap-1 items-center">
+                <EyeIcon className="w-3.5 h-3.5" />
+                10
+              </p>
+            </MinimalTooltip>
+          </div>
+
+          {/* Twitter */}
+          <div className="flex gap-2 items-center text-xs text-[#5DBCFF] flex-wrap">
+            {token.twitterPost ? (
+              <>
                 <Link
                   className="hover:underline"
                   target="_blank"
                   href={`https://x.com/${token.twitterPost.author?.username}`}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                  }}
+                  onClick={(e) => e.stopPropagation()}
                 >
                   by @{token.twitterPost.author?.username}
                 </Link>
-              </MinimalTooltip>
-              <MinimalTooltip label="Followers">
+
                 <p className="flex gap-0.5 items-center">
                   <UserIcon className="w-3 h-3" />
                   {humanizeNumber(token.twitterPost.author?.followers)}
                 </p>
-              </MinimalTooltip>
-            </>
-          ) : (
-            <span className="invisible">by @username</span>
-          )}
-        </div>
-        <div className="items-center flex gap-2">
-          <MinimalTooltip independent label="Top 10 holders">
-            <TokenBadge value={live.topHolder} icon={UserStarIcon} />
-          </MinimalTooltip>
+              </>
+            ) : (
+              <span className="invisible">by @username</span>
+            )}
+          </div>
 
-          <MinimalTooltip independent label="Developer holdings">
-            <TokenBadge value={live.devHold} icon={ChefHatIcon} />
-          </MinimalTooltip>
+          {/* Badges */}
+          <div className="flex gap-1.5 items-center flex-wrap">
+            <MinimalTooltip independent label="Top 10 Holders">
+              <TokenBadge value={live.topHolder} icon={UserStarIcon} />
+            </MinimalTooltip>
 
-          <MinimalTooltip independent label="Snipers">
-            <TokenBadge value={live.snipersHold} icon={CrosshairIcon} />
-          </MinimalTooltip>
+            <MinimalTooltip independent label="Dev Holdings">
+              <TokenBadge value={live.devHold} icon={ChefHatIcon} />
+            </MinimalTooltip>
 
-          <MinimalTooltip independent label="Insiders">
-            <TokenBadge value={live.insidersHold} icon={GhostIcon} />
-          </MinimalTooltip>
+            <MinimalTooltip independent label="Snipers">
+              <TokenBadge value={live.snipersHold} icon={CrosshairIcon} />
+            </MinimalTooltip>
 
-          <MinimalTooltip independent label="Bundlers">
-            <TokenBadge value={live.bundleHold} icon={BoxesIcon} />
-          </MinimalTooltip>
+            <MinimalTooltip independent label="Insiders">
+              <TokenBadge value={live.insidersHold} icon={GhostIcon} />
+            </MinimalTooltip>
+
+            <MinimalTooltip independent label="Bundlers">
+              <TokenBadge value={live.bundleHold} icon={BoxesIcon} />
+            </MinimalTooltip>
+          </div>
         </div>
       </div>
-      <div className="ml-auto flex flex-col">
-        <MinimalTooltip label="Market Cap">
-          <TokenDigit name="MC" value="$15.6k" />
-        </MinimalTooltip>
 
-        <MinimalTooltip label="Volume">
+      {/* Right column */}
+      <div
+        className="
+          flex flex-row justify-between items-center gap-3
+          md:ml-auto md:flex-col md:items-end
+        "
+      >
+        <div className="flex gap-4 md:flex-col md:gap-1">
+          <TokenDigit name="MC" value="$15.6k" />
           <TokenDigit name="V" value="$42k" />
-        </MinimalTooltip>
+        </div>
 
         <Button
-          className="mt-auto ml-auto p-1.5! h-max w-max rounded-full bg-primary/20 text-primary hover:text-black gap-1 text-xs"
+          className="
+            ml-auto rounded-full bg-primary/20 text-primary gap-1 text-xs
+            py-1.5! h-max md:rounded-full hover:text-accent-foreground
+          "
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
           }}
         >
-          <ZapIcon />1 SOL
+          <ZapIcon className="w-4 h-4" />1 SOL
         </Button>
       </div>
     </div>
