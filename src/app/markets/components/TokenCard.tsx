@@ -12,7 +12,6 @@ import {
   CrosshairIcon,
   EyeIcon,
   GhostIcon,
-  IconNode,
   LucideIcon,
   UserIcon,
   UsersIcon,
