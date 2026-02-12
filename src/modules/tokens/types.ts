@@ -3,6 +3,13 @@ export interface Token {
   symbol: string;
   name: string;
   logoURI?: string;
+  twitterPost: {
+    link: string;
+    author: {
+      username: string;
+      followers: number;
+    };
+  };
 }
 
 export interface TokenLiveData {

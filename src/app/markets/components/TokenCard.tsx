@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { humanizeNumber } from "@/lib/renderUtils";
 import { cn } from "@/lib/utils";
 import { Token, TokenLiveData } from "@/modules/tokens/types";
 import {
@@ -12,10 +13,13 @@ import {
   GhostIcon,
   IconNode,
   LucideIcon,
+  UserIcon,
   UsersIcon,
   UserStarIcon,
   ZapIcon,
 } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function TokenCard({ token }: { token: Token }) {
   const live: TokenLiveData = {
@@ -26,8 +30,16 @@ export default function TokenCard({ token }: { token: Token }) {
     bundleHold: 3,
   };
 
+  const router = useRouter();
+
   return (
-    <div className="flex gap-4">
+    <div
+      className="flex gap-4 cursor-pointer"
+      onClick={() => router.push(`/token/${token.mint}`)}
+      onContextMenu={() =>
+        window.open(`/token/${token.mint}`, "_blank", "noopener,noreferrer")
+      }
+    >
       <div className="h-full overflow-hidden min-w-0">
         {token.logoURI ? (
           <img
@@ -42,10 +54,17 @@ export default function TokenCard({ token }: { token: Token }) {
         )}
         <p className="mt-1 truncate text-xs text-muted-foreground"></p>
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-1">
         <div className="flex gap-1.5">
           <p className="font-semibold">{token.symbol}</p>
-          <p className="text-muted-foreground flex gap-1 items-center h-max cursor-pointer hover:text-accent">
+          <p
+            className="text-muted-foreground flex gap-1 items-center h-max cursor-pointer hover:text-accent"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              navigator.clipboard.writeText(token.mint);
+            }}
+          >
             {token.name} <CopyIcon className="w-4 h-4" />
           </p>
         </div>
@@ -60,6 +79,28 @@ export default function TokenCard({ token }: { token: Token }) {
             10
           </p>
         </div>
+        <div className="flex gap-1.5 items-center text-xs text-[#5DBCFF]">
+          {token.twitterPost ? (
+            <>
+              <Link
+                className="hover:underline"
+                target="_blank"
+                href={`https://x.com/${token.twitterPost.author?.username}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+              >
+                by @{token.twitterPost.author?.username}
+              </Link>
+              <p className="flex gap-0.5 items-center">
+                <UserIcon className="w-3 h-3" />
+                {humanizeNumber(token.twitterPost.author?.followers)}
+              </p>
+            </>
+          ) : (
+            <span className="invisible">by @username</span>
+          )}
+        </div>
         <div className="items-center flex gap-2">
           <TokenBadge value={live.topHolder} icon={UserStarIcon} />
           <TokenBadge value={live.devHold} icon={ChefHatIcon} />
@@ -71,7 +112,13 @@ export default function TokenCard({ token }: { token: Token }) {
       <div className="ml-auto flex flex-col">
         <TokenDigit name="MC" value="$15.6k" />
         <TokenDigit name="V" value="$42k" />
-        <Button className="mt-auto ml-auto p-1! h-max w-max rounded-full bg-primary/20 text-primary hover:text-black gap-1 text-xs">
+        <Button
+          className="mt-auto ml-auto p-1! h-max w-max rounded-full bg-primary/20 text-primary hover:text-black gap-1 text-xs"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+          }}
+        >
           <ZapIcon />1 SOL
         </Button>
       </div>

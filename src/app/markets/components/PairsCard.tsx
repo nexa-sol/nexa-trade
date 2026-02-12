@@ -41,7 +41,18 @@ export default function PairsCard({ title }: { title: string }) {
       </CardHeader>
       <CardContent className="px-4 py-4 border-b border-border hover:bg-muted">
         <TokenCard
-          token={{ symbol: "SYM", name: "My token", mint: "myMint" }}
+          token={{
+            symbol: "SYM",
+            name: "My token",
+            mint: "myMint",
+            twitterPost: {
+              link: "https://x.com/selimajdev/status/2013291898836758968",
+              author: {
+                username: "selimajdev",
+                followers: 1250000,
+              },
+            },
+          }}
         />
       </CardContent>
     </Card>
