@@ -153,7 +153,7 @@ export default function TokenCard({ token }: { token: Token }) {
         </MinimalTooltip>
 
         <Button
-          className="mt-auto ml-auto p-1! h-max w-max rounded-full bg-primary/20 text-primary hover:text-black gap-1 text-xs"
+          className="mt-auto ml-auto p-1.5! h-max w-max rounded-full bg-primary/20 text-primary hover:text-black gap-1 text-xs"
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
