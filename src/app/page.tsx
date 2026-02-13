@@ -85,11 +85,13 @@ export default function Landing() {
               >
                 <div className="opacity-0 group">
                   <div className="p-6 rounded-xl border border-border h-full transition-colors duration-500 bg-card/20 hover:bg-card/40 hover:border-primary/30">
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/15 transition-colors duration-500">
-                      <Icon className="w-6 h-6 text-primary" />
+                    <div className="flex flex-col items-center">
+                      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/15 transition-colors duration-500">
+                        <Icon className="w-6 h-6 text-primary" />
+                      </div>
+                      <h3 className="text-xl font-medium mb-3">{title}</h3>
                     </div>
-                    <h3 className="text-xl font-medium mb-3">{title}</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
+                    <p className="text-muted-foreground text-sm leading-relaxed text-center">
                       {desc}
                     </p>
                   </div>
@@ -124,7 +126,7 @@ export default function Landing() {
               {
                 icon: Filter,
                 step: "Decide",
-                desc: "AI filters or manual overrides determine execution eligibility.",
+                desc: "AI flags risks automatically, or you override and trade anyway.",
               },
               {
                 icon: Send,
@@ -135,13 +137,15 @@ export default function Landing() {
               <Motion key={i} className="animate-fade-in-up">
                 <div className="opacity-0">
                   <div className="p-5 rounded-lg border border-border h-full transition-colors duration-500 bg-card/20 hover:bg-card/40 hover:border-primary/30">
-                    <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-3 bg-primary/10 group-hover:bg-primary/20 transition-colors duration-500">
-                      <Icon className="w-5 h-5 text-primary" />
+                    <div className="flex flex-col items-center">
+                      <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-3 bg-primary/10 group-hover:bg-primary/20 transition-colors duration-500">
+                        <Icon className="w-5 h-5 text-primary" />
+                      </div>
+                      <span className="block text-foreground font-semibold text-base mb-2">
+                        {step}
+                      </span>
                     </div>
-                    <span className="block text-foreground font-semibold text-base mb-2">
-                      {step}
-                    </span>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
+                    <p className="text-muted-foreground text-sm leading-relaxed text-center">
                       {desc}
                     </p>
                   </div>
