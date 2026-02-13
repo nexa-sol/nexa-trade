@@ -24,26 +24,29 @@ export default function Landing() {
       {/* Hero */}
       <section className="relative z-10 px-6 pt-32 pb-24 max-w-7xl mx-auto">
         <div className="max-w-3xl">
-          <h1 className="text-5xl md:text-6xl font-semibold leading-tight">
+          <h1 className="text-5xl md:text-6xl font-semibold leading-tight animate-fade-in-up">
             Trade memecoins <br />
             <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent">
               without trading blind
             </span>
           </h1>
 
-          <p className="mt-6 text-lg text-muted-foreground max-w-xl">
+          <p className="mt-6 text-lg text-muted-foreground max-w-xl animate-fade-in-up animate-delay-100">
             Nexa filters noise, intercepts high-rug setups, and executes faster,
             so you spend less time guessing and more time surviving.
           </p>
 
           <div className="mt-10 flex gap-4">
-            <Link href="/markets" className="animate-fade-in-up">
+            <Link
+              href="/markets"
+              className="animate-fade-in-up animate-duration-500 animate-delay-200"
+            >
               <button className="px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:opacity-90 transition">
                 Open Terminal
               </button>
             </Link>
             <Link
-              className="animate-fade-in-up animate-delay-100"
+              className="animate-fade-in-up animate-duration-500 animate-delay-300"
               href="https://github.com/nexa-sol/nexa-trade?tab=readme-ov-file#-nexa-roadmap--alpha-release"
               target="_blank"
             >
@@ -81,8 +84,8 @@ export default function Landing() {
                 className="animate-fade-in-up animate-duration-500"
               >
                 <div className="opacity-0 group">
-                  <div className="p-6 rounded-xl border border-border bg-card/50 hover:bg-card/80 transition-all hover:border-primary/50 h-full">
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                  <div className="p-6 rounded-xl border border-border h-full transition-colors duration-500 bg-card/20 hover:bg-card/40 hover:border-primary/30">
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/15 transition-colors duration-500">
                       <Icon className="w-6 h-6 text-primary" />
                     </div>
                     <h3 className="text-xl font-medium mb-3">{title}</h3>
@@ -99,7 +102,11 @@ export default function Landing() {
 
       {/* How it works */}
       <section className="relative z-10 px-6 py-24 max-w-7xl mx-auto">
-        <h2 className="text-3xl font-semibold mb-12">How it works</h2>
+        <Motion className="animate-fade-in-right animate-duration-800">
+          <h2 className="text-3xl font-semibold mb-12 opacity-0">
+            How it works
+          </h2>
+        </Motion>
 
         <div className="grid md:grid-cols-4 gap-6">
           <Staggered stagger={150}>
@@ -125,14 +132,10 @@ export default function Landing() {
                 desc: "Trades are routed through Jupiter with minimal latency.",
               },
             ].map(({ icon: Icon, step, desc }, i) => (
-              <Motion
-                key={i}
-                className="animate-fade-in-up"
-                style={{ animationDelay: `${i * 100}ms` }}
-              >
+              <Motion key={i} className="animate-fade-in-up">
                 <div className="opacity-0">
-                  <div className="p-5 rounded-lg border border-border/50 bg-card/30 hover:bg-card/50 hover:border-primary/30 transition-all">
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
+                  <div className="p-5 rounded-lg border border-border h-full transition-colors duration-500 bg-card/20 hover:bg-card/40 hover:border-primary/30">
+                    <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-3 bg-primary/10 group-hover:bg-primary/20 transition-colors duration-500">
                       <Icon className="w-5 h-5 text-primary" />
                     </div>
                     <span className="block text-foreground font-semibold text-base mb-2">
