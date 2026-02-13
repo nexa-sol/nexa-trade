@@ -1,6 +1,16 @@
 "use client";
 import Link from "next/link";
 import { Motion, Staggered } from "tailwind-motlib";
+import {
+  Shield,
+  Zap,
+  Brain,
+  Scan,
+  BarChart3,
+  Filter,
+  Send,
+  TrendingDown,
+} from "lucide-react";
 
 export default function Landing() {
   return (
@@ -27,12 +37,13 @@ export default function Landing() {
           </p>
 
           <div className="mt-10 flex gap-4">
-            <Link href="/markets">
+            <Link href="/markets" className="animate-fade-in-up">
               <button className="px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:opacity-90 transition">
                 Open Terminal
               </button>
             </Link>
             <Link
+              className="animate-fade-in-up animate-delay-100"
               href="https://github.com/nexa-sol/nexa-trade?tab=readme-ov-file#-nexa-roadmap--alpha-release"
               target="_blank"
             >
@@ -44,118 +55,97 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Live signal strip */}
-      {/* <section className="relative z-10 border-y border-border/60 bg-card/40 backdrop-blur">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex gap-8 text-sm text-muted-foreground overflow-x-auto">
-          <span>🟢 12 rugs intercepted today</span>
-          <span>⚡ Median execution: 420ms</span>
-          <span>📉 Top 10 holder risk flagged</span>
-          <span>🔍 Bundler detected pre-launch</span>
-        </div>
-      </section> */}
-
-      {/* Why Nexa */}
+      {/* Features */}
       <section className="relative z-10 px-6 py-24 max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-3 gap-8">
           <Staggered stagger={100}>
-            <Motion className="visible animate-fade-in-up">
-              <div className="invisible">
-                <h3 className="text-xl font-medium mb-2">
-                  Risk-aware by default
-                </h3>
-                <p className="text-muted-foreground">
-                  Every trade is evaluated against holder concentration,
-                  bundlers, deployer behavior, and liquidity signals, before
-                  execution.
-                </p>
-              </div>
-            </Motion>
-
-            <Motion className="visible animate-fade-in-up">
-              <div className="invisible">
-                <h3 className="text-xl font-medium mb-2">
-                  AI where it matters
-                </h3>
-                <p className="text-muted-foreground">
-                  No magic predictions. Just automated checks that experienced
-                  traders already do, instantly and consistently.
-                </p>
-              </div>
-            </Motion>
-
-            <Motion className="visible animate-fade-in-up">
-              <div className="invisible">
-                <h3 className="text-xl font-medium mb-2">Built for speed</h3>
-                <p className="text-muted-foreground">
-                  Optimized request batching, Solana-native execution, and
-                  Jupiter routing keep latency low even during peak volume.
-                </p>
-              </div>
-            </Motion>
+            {[
+              {
+                icon: Shield,
+                title: "Stop Rugs Before They Happen",
+                desc: "Scans each token for risks like holder concentration, grouped wallets, deployer history, and liquidity issues. You see exactly what's wrong before you trade.",
+              },
+              {
+                icon: Zap,
+                title: "Built for Solana Speed",
+                desc: "Optimized batching and Jupiter routing keep trades fast when the network is busy. Catch opportunities while they're still there.",
+              },
+              {
+                icon: TrendingDown,
+                title: "Automated Risk Checks",
+                desc: "AI handles wallet analysis, deployer vetting, and liquidity checks on every trade. Skip the manual work and focus on timing.",
+              },
+            ].map(({ icon: Icon, title, desc }, i) => (
+              <Motion
+                key={i}
+                className="animate-fade-in-up animate-duration-500"
+              >
+                <div className="opacity-0 group">
+                  <div className="p-6 rounded-xl border border-border bg-card/50 hover:bg-card/80 transition-all hover:border-primary/50 h-full">
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                      <Icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-medium mb-3">{title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {desc}
+                    </p>
+                  </div>
+                </div>
+              </Motion>
+            ))}
           </Staggered>
         </div>
       </section>
-
-      {/* Risk interception highlight */}
-      <Motion className="animate-fade-in-left">
-        <section className="relative z-10 px-6 py-24 max-w-7xl mx-auto opacity-0">
-          <div className="rounded-2xl border border-border bg-card/60 backdrop-blur p-10">
-            <h2 className="text-3xl font-semibold mb-4">
-              Nexa can stop you before you buy a rug
-            </h2>
-            <p className="text-muted-foreground max-w-2xl">
-              When high-risk patterns are detected, Nexa blocks execution by
-              default and tells you exactly why. If you still want in, that's
-              your call. But it won't be blind.
-            </p>
-          </div>
-        </section>
-      </Motion>
 
       {/* How it works */}
       <section className="relative z-10 px-6 py-24 max-w-7xl mx-auto">
         <h2 className="text-3xl font-semibold mb-12">How it works</h2>
 
-        <div className="grid md:grid-cols-4 gap-8 text-sm">
-          <div className="text-muted-foreground">
-            <span className="block text-foreground font-medium mb-1">
-              1. Detect
-            </span>
-            New pairs, migrations, and liquidity events are tracked in real
-            time.
-          </div>
-          <div className="text-muted-foreground">
-            <span className="block text-foreground font-medium mb-1">
-              2. Analyze
-            </span>
-            Risk signals, holder distribution, and deployer behavior are scored.
-          </div>
-          <div className="text-muted-foreground">
-            <span className="block text-foreground font-medium mb-1">
-              3. Decide
-            </span>
-            AI filters or manual overrides determine execution eligibility.
-          </div>
-          <div className="text-muted-foreground">
-            <span className="block text-foreground font-medium mb-1">
-              4. Execute
-            </span>
-            Trades are routed through Jupiter with minimal latency.
-          </div>
-        </div>
-      </section>
-
-      {/* Fees & alignment */}
-      <section className="relative z-10 px-6 py-24 max-w-7xl mx-auto">
-        <div className="max-w-2xl">
-          <h2 className="text-3xl font-semibold mb-4">
-            Fees that scale with success
-          </h2>
-          <p className="text-muted-foreground">
-            Nexa charges a small platform fee on executed trades, with optional
-            AI and quant features available per-use. No subscriptions. No hidden
-            incentives.
-          </p>
+        <div className="grid md:grid-cols-4 gap-6">
+          <Staggered stagger={150}>
+            {[
+              {
+                icon: Scan,
+                step: "Detect",
+                desc: "New pairs, migrations, and liquidity events are tracked in real time.",
+              },
+              {
+                icon: BarChart3,
+                step: "Analyze",
+                desc: "Risk signals, holder distribution, and deployer behavior are scored.",
+              },
+              {
+                icon: Filter,
+                step: "Decide",
+                desc: "AI filters or manual overrides determine execution eligibility.",
+              },
+              {
+                icon: Send,
+                step: "Execute",
+                desc: "Trades are routed through Jupiter with minimal latency.",
+              },
+            ].map(({ icon: Icon, step, desc }, i) => (
+              <Motion
+                key={i}
+                className="animate-fade-in-up"
+                style={{ animationDelay: `${i * 100}ms` }}
+              >
+                <div className="opacity-0">
+                  <div className="p-5 rounded-lg border border-border/50 bg-card/30 hover:bg-card/50 hover:border-primary/30 transition-all">
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
+                      <Icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <span className="block text-foreground font-semibold text-base mb-2">
+                      {step}
+                    </span>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {desc}
+                    </p>
+                  </div>
+                </div>
+              </Motion>
+            ))}
+          </Staggered>
         </div>
       </section>
     </main>
