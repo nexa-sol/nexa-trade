@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import { Motion, Staggered } from "tailwind-motlib";
 
 export default function Landing() {
   return (
@@ -55,45 +57,60 @@ export default function Landing() {
       {/* Why Nexa */}
       <section className="relative z-10 px-6 py-24 max-w-7xl mx-auto">
         <div className="grid md:grid-cols-3 gap-10">
-          <div>
-            <h3 className="text-xl font-medium mb-2">Risk-aware by default</h3>
-            <p className="text-muted-foreground">
-              Every trade is evaluated against holder concentration, bundlers,
-              deployer behavior, and liquidity signals, before execution.
-            </p>
-          </div>
+          <Staggered stagger={100}>
+            <Motion className="visible animate-fade-in-up">
+              <div className="invisible">
+                <h3 className="text-xl font-medium mb-2">
+                  Risk-aware by default
+                </h3>
+                <p className="text-muted-foreground">
+                  Every trade is evaluated against holder concentration,
+                  bundlers, deployer behavior, and liquidity signals, before
+                  execution.
+                </p>
+              </div>
+            </Motion>
 
-          <div>
-            <h3 className="text-xl font-medium mb-2">AI where it matters</h3>
-            <p className="text-muted-foreground">
-              No magic predictions. Just automated checks that experienced
-              traders already do, instantly and consistently.
-            </p>
-          </div>
+            <Motion className="visible animate-fade-in-up">
+              <div className="invisible">
+                <h3 className="text-xl font-medium mb-2">
+                  AI where it matters
+                </h3>
+                <p className="text-muted-foreground">
+                  No magic predictions. Just automated checks that experienced
+                  traders already do, instantly and consistently.
+                </p>
+              </div>
+            </Motion>
 
-          <div>
-            <h3 className="text-xl font-medium mb-2">Built for speed</h3>
-            <p className="text-muted-foreground">
-              Optimized request batching, Solana-native execution, and Jupiter
-              routing keep latency low even during peak volume.
-            </p>
-          </div>
+            <Motion className="visible animate-fade-in-up">
+              <div className="invisible">
+                <h3 className="text-xl font-medium mb-2">Built for speed</h3>
+                <p className="text-muted-foreground">
+                  Optimized request batching, Solana-native execution, and
+                  Jupiter routing keep latency low even during peak volume.
+                </p>
+              </div>
+            </Motion>
+          </Staggered>
         </div>
       </section>
 
       {/* Risk interception highlight */}
-      <section className="relative z-10 px-6 py-24 max-w-7xl mx-auto">
-        <div className="rounded-2xl border border-border bg-card/60 backdrop-blur p-10">
-          <h2 className="text-3xl font-semibold mb-4">
-            Nexa can stop you before you buy a rug
-          </h2>
-          <p className="text-muted-foreground max-w-2xl">
-            When high-risk patterns are detected, Nexa blocks execution by
-            default and tells you exactly why. If you still want in, that's your
-            call. But it won't be blind.
-          </p>
-        </div>
-      </section>
+      <Motion className="animate-fade-in-left">
+        <section className="relative z-10 px-6 py-24 max-w-7xl mx-auto opacity-0">
+          <div className="rounded-2xl border border-border bg-card/60 backdrop-blur p-10">
+            <h2 className="text-3xl font-semibold mb-4">
+              Nexa can stop you before you buy a rug
+            </h2>
+            <p className="text-muted-foreground max-w-2xl">
+              When high-risk patterns are detected, Nexa blocks execution by
+              default and tells you exactly why. If you still want in, that's
+              your call. But it won't be blind.
+            </p>
+          </div>
+        </section>
+      </Motion>
 
       {/* How it works */}
       <section className="relative z-10 px-6 py-24 max-w-7xl mx-auto">
