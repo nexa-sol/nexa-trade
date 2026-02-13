@@ -3,8 +3,15 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Settings2Icon, ZapIcon } from "lucide-react";
 import TokenCard from "./TokenCard";
+import { Token } from "@/modules/tokens/types";
 
-export default function PairsCard({ title }: { title: string }) {
+export default function PairsCard({
+  title,
+  tokens,
+}: {
+  title: string;
+  tokens: Token[];
+}) {
   return (
     <Card className="py-3 gap-0!">
       <CardHeader className="px-4 pb-3! border-b flex justify-between items-center">
@@ -39,10 +46,12 @@ export default function PairsCard({ title }: { title: string }) {
           </Button>
         </div>
       </CardHeader>
-      <CardContent className="px-4 py-4 border-b border-border hover:bg-muted">
-        <TokenCard
-          token={{ symbol: "SYM", name: "My token", mint: "myMint" }}
-        />
+      <CardContent className="p-0">
+        {tokens.map((token) => (
+          <div key={token.mint} className="px-4 py-4 border-b border-border hover:bg-muted">
+            <TokenCard token={token} />
+          </div>
+        ))}
       </CardContent>
     </Card>
   );
