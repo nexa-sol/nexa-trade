@@ -25,15 +25,15 @@ export default function Landing() {
       <section className="relative z-10 px-6 pt-32 pb-24 max-w-7xl mx-auto">
         <div className="max-w-3xl">
           <h1 className="text-5xl md:text-6xl font-semibold leading-tight animate-fade-in-up">
-            Trade memecoins <br />
+            Your copilot for <br />
             <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent">
-              without trading blind
+              memecoin trading
             </span>
           </h1>
 
           <p className="mt-6 text-lg text-muted-foreground max-w-xl animate-fade-in-up animate-delay-100">
-            Nexa filters noise, intercepts high-rug setups, and executes faster,
-            so you spend less time guessing and more time surviving.
+            Catch rugs before they happen, execute trades at Solana
+            speed, and automate the research pro traders do.
           </p>
 
           <div className="mt-10 flex gap-4">
@@ -65,18 +65,18 @@ export default function Landing() {
             {[
               {
                 icon: Shield,
-                title: "Stop Rugs Before They Happen",
-                desc: "Scans each token for risks like holder concentration, grouped wallets, deployer history, and liquidity issues. You see exactly what's wrong before you trade.",
+                title: "Warns You Before Rugs",
+                desc: "Nexa scans each token for risks like holder concentration, grouped wallets, deployer history, and liquidity issues. You see exactly what's wrong before you trade.",
               },
               {
                 icon: Zap,
-                title: "Built for Solana Speed",
-                desc: "Optimized batching and Jupiter routing keep trades fast when the network is busy. Catch opportunities while they're still there.",
+                title: "Routes Trades Fast",
+                desc: "Nexa handles batching and Jupiter routing to keep your execution quick when the network is busy. You catch opportunities while they're still there.",
               },
               {
-                icon: TrendingDown,
-                title: "Automated Risk Checks",
-                desc: "AI handles wallet analysis, deployer vetting, and liquidity checks on every trade. Skip the manual work and focus on timing.",
+                icon: Brain,
+                title: "Does the Research For You",
+                desc: "Nexa runs wallet analysis, deployer vetting, and liquidity checks on every trade. You skip the manual work and focus on timing.",
               },
             ].map(({ icon: Icon, title, desc }, i) => (
               <Motion
@@ -106,7 +106,7 @@ export default function Landing() {
       <section className="relative z-10 px-6 py-24 max-w-7xl mx-auto">
         <Motion className="animate-fade-in-right animate-duration-800">
           <h2 className="text-3xl font-semibold mb-12 opacity-0">
-            How it works
+            How Nexa works
           </h2>
         </Motion>
 
@@ -115,23 +115,23 @@ export default function Landing() {
             {[
               {
                 icon: Scan,
-                step: "Detect",
-                desc: "New pairs, migrations, and liquidity events are tracked in real time.",
+                step: "Watches",
+                desc: "Tracks new pairs, migrations, and liquidity events in real time.",
               },
               {
                 icon: BarChart3,
-                step: "Analyze",
-                desc: "Risk signals, holder distribution, and deployer behavior are scored.",
+                step: "Scores",
+                desc: "Analyzes risk signals, holder distribution, and deployer behavior.",
               },
               {
                 icon: Filter,
-                step: "Decide",
-                desc: "AI flags risks automatically, or you override and trade anyway.",
+                step: "Flags",
+                desc: "Alerts you to risks automatically, or lets you override and trade anyway.",
               },
               {
                 icon: Send,
-                step: "Execute",
-                desc: "Trades are routed through Jupiter with minimal latency.",
+                step: "Routes",
+                desc: "Executes your trades through Jupiter with minimal latency.",
               },
             ].map(({ icon: Icon, step, desc }, i) => (
               <Motion key={i} className="animate-fade-in-up">
