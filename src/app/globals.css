@@ -48,6 +48,9 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-bullish: var(--bullish);
+  --color-bearish: var(--bearish);
 }
 
 :root {
@@ -106,6 +109,12 @@
 
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.6 0.12 285);
+  
+  /* Bullish - vibrant SOL mint */
+  --bullish: oklch(0.72 0.18 165);
+  
+  /* Bearish - destructive/coral red */
+  --bearish: oklch(0.62 0.2 30);
 }
 
 @layer base {
