@@ -38,20 +38,20 @@ export default function Landing() {
 
           <div className="mt-10 flex gap-4 mx-auto w-max">
             <Link
-              href="/markets"
-              className="animate-fade-in-up animate-duration-500 animate-delay-300"
-            >
-              <button className="px-6 py-3 rounded-lg font-medium transition border border-border outline-primary text-primary bg-primary/8 hover:border-primary hover:bg-primary/12">
-                Open Terminal
-              </button>
-            </Link>
-            <Link
               className="animate-fade-in-up animate-duration-500 animate-delay-200"
               href="https://github.com/nexa-sol/nexa-trade?tab=readme-ov-file#-nexa-roadmap--alpha-release"
               target="_blank"
             >
               <button className="px-6 py-3 rounded-lg border border-border hover:bg-accent/10 hover:text-accent transition">
                 View Roadmap
+              </button>
+            </Link>
+            <Link
+              href="/markets"
+              className="animate-fade-in-up animate-duration-500 animate-delay-300"
+            >
+              <button className="px-6 py-3 rounded-lg font-medium transition border border-border outline-primary text-primary bg-primary/8 hover:border-primary hover:bg-primary/12">
+                Open Terminal
               </button>
             </Link>
           </div>
@@ -61,7 +61,7 @@ export default function Landing() {
       {/* Features */}
       <section className="relative z-10 px-6 py-24 max-w-7xl mx-auto">
         <div className="grid md:grid-cols-3 gap-8">
-          <Staggered stagger={100}>
+          <Staggered stagger={150}>
             {[
               {
                 icon: Shield,
