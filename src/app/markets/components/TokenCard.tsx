@@ -40,13 +40,13 @@ export default function TokenCard({ token }: { token: Token }) {
       "
       onClick={(e) => {
         if (e.ctrlKey || e.metaKey) {
-          window.open(`/token/${token.mint}`, "_blank", "noopener,noreferrer");
+          window.open(`/market/${token.mint}`, "_blank", "noopener,noreferrer");
         } else {
-          router.push(`/token/${token.mint}`);
+          router.push(`/market/${token.mint}`);
         }
       }}
       onContextMenu={() =>
-        window.open(`/token/${token.mint}`, "_blank", "noopener,noreferrer")
+        window.open(`/market/${token.mint}`, "_blank", "noopener,noreferrer")
       }
     >
       {/* Left: logo */}

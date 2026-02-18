@@ -22,36 +22,36 @@ export default function Landing() {
       </div>
 
       {/* Hero */}
-      <section className="relative z-10 px-6 pt-32 pb-24 max-w-7xl mx-auto">
-        <div className="max-w-3xl">
-          <h1 className="text-5xl md:text-6xl font-semibold leading-tight animate-fade-in-up">
+      <section className="pt-32 pb-24 w-full">
+        <div className="w-full">
+          <h1 className="text-center text-5xl md:text-6xl font-semibold leading-tight animate-fade-in-up">
             Your copilot for <br />
             <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent">
               memecoin trading
             </span>
           </h1>
 
-          <p className="mt-6 text-lg text-muted-foreground max-w-xl animate-fade-in-up animate-delay-100">
-            Catch rugs before they happen, execute trades at Solana
-            speed, and automate the research pro traders do.
+          <p className="mx-auto text-center mt-6 text-lg text-muted-foreground max-w-xl animate-fade-in-up animate-delay-100">
+            Catch rugs before they happen, execute trades at Solana speed, and
+            automate the research pro traders do.
           </p>
 
-          <div className="mt-10 flex gap-4">
+          <div className="mt-10 flex gap-4 mx-auto w-max">
             <Link
-              href="/markets"
               className="animate-fade-in-up animate-duration-500 animate-delay-200"
-            >
-              <button className="px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:opacity-90 transition">
-                Open Terminal
-              </button>
-            </Link>
-            <Link
-              className="animate-fade-in-up animate-duration-500 animate-delay-300"
               href="https://github.com/nexa-sol/nexa-trade?tab=readme-ov-file#-nexa-roadmap--alpha-release"
               target="_blank"
             >
-              <button className="px-6 py-3 rounded-lg border border-border hover:bg-accent/10 transition">
+              <button className="px-6 py-3 rounded-lg border border-border hover:bg-accent/10 hover:text-accent transition">
                 View Roadmap
+              </button>
+            </Link>
+            <Link
+              href="/markets"
+              className="animate-fade-in-up animate-duration-500 animate-delay-300"
+            >
+              <button className="px-6 py-3 rounded-lg font-medium transition border border-border outline-primary text-primary bg-primary/8 hover:border-primary hover:bg-primary/12">
+                Open Terminal
               </button>
             </Link>
           </div>
@@ -61,7 +61,7 @@ export default function Landing() {
       {/* Features */}
       <section className="relative z-10 px-6 py-24 max-w-7xl mx-auto">
         <div className="grid md:grid-cols-3 gap-8">
-          <Staggered stagger={100}>
+          <Staggered stagger={150}>
             {[
               {
                 icon: Shield,
