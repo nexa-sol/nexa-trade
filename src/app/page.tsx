@@ -38,20 +38,20 @@ export default function Landing() {
 
           <div className="mt-10 flex gap-4">
             <Link
-              href="/markets"
               className="animate-fade-in-up animate-duration-500 animate-delay-200"
-            >
-              <button className="px-6 py-3 rounded-lg font-medium transition border border-border outline-primary text-primary bg-primary/8 hover:border-primary hover:bg-primary/12">
-                Open Terminal
-              </button>
-            </Link>
-            <Link
-              className="animate-fade-in-up animate-duration-500 animate-delay-300"
               href="https://github.com/nexa-sol/nexa-trade?tab=readme-ov-file#-nexa-roadmap--alpha-release"
               target="_blank"
             >
               <button className="px-6 py-3 rounded-lg border border-border hover:bg-accent/10 hover:text-accent transition">
                 View Roadmap
+              </button>
+            </Link>
+            <Link
+              href="/markets"
+              className="animate-fade-in-up animate-duration-500 animate-delay-300"
+            >
+              <button className="px-6 py-3 rounded-lg font-medium transition border border-border outline-primary text-primary bg-primary/8 hover:border-primary hover:bg-primary/12">
+                Open Terminal
               </button>
             </Link>
           </div>
