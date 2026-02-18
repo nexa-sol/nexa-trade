@@ -2,7 +2,7 @@
 
 import Navbar from "@/components/layout/Navbar";
 import Statusbar from "@/components/layout/Statusbar";
-import MarketSidebar from "./components/MarketSidebar";
+import MarketSidebar from "./components/market-sidebar/MarketSidebar";
 
 export default function Market() {
   return (
