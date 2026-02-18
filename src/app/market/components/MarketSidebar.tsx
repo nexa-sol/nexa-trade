@@ -24,7 +24,7 @@ export default function MarketSidebar() {
           <div className="h-72">buy placeholder</div>
         </TabsContent>
         <TabsContent value="sell" className="border-b">
-          <div className="h-72">buy placeholder</div>
+          <div className="h-72">sell placeholder</div>
         </TabsContent>
       </Tabs>
     </div>
