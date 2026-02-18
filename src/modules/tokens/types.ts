@@ -3,7 +3,7 @@ export interface Token {
   symbol: string;
   name: string;
   logoURI?: string;
-  twitterPost: {
+  twitterPost?: {
     link: string;
     author: {
       username: string;
