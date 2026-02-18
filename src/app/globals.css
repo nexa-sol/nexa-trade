@@ -114,7 +114,7 @@
   --bullish: oklch(0.72 0.18 165);
   
   /* Bearish - destructive/coral red */
-  --bearish: oklch(0.62 0.2 30);
+  --bearish: oklch(63.35% 0.2171 4.38);
 }
 
 @layer base {

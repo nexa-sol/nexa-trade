@@ -9,10 +9,12 @@ export default function Market() {
     <main className="w-full h-full">
       <Navbar />
       <section className="w-full h-full flex flex-row">
-        <div className="w-full h-svh border-r border-border"></div>
+        <div className="w-full h-svh border-r border-border">
+            
+        </div>
         <MarketSidebar />
       </section>
-      {/* <Statusbar /> */}
+      <Statusbar />
     </main>
   );
 }
